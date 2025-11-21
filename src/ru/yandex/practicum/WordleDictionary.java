@@ -40,9 +40,9 @@ public class WordleDictionary {
     }
 
     public List<String> getWords(
-            Set<Character> excludedChars
-            , Set<Character> requiredChars
-            , Map<Integer, Character> fixedChars
+            Set<Character> excludedChars,
+            Set<Character> requiredChars,
+            Map<Integer, Character> fixedChars
     ) {
         List<String> dictionary = new ArrayList<>();
         for (String word : words) {
