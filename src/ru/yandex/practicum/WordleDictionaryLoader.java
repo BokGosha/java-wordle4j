@@ -19,9 +19,9 @@ import java.util.List;
  */
 public class WordleDictionaryLoader {
 
-    public WordleDictionary loadWordleDictionary(String filePath) throws EmptyFileException
-            , InvalidFileFormatException
-            , IOException {
+    public WordleDictionary loadWordleDictionary(String filePath) throws EmptyFileException,
+            InvalidFileFormatException,
+            IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath, StandardCharsets.UTF_8))) {
             validateFormatFile(filePath);
             validateFileContent(filePath);
