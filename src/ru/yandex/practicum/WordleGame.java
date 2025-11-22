@@ -39,6 +39,10 @@ public class WordleGame {
     }
 
     public String getAnswer(String userAnswer) throws WordNotFoundInDictionaryException, RepeatWordException {
+        if (!dictionary.containsWord(userAnswer)) {
+            throw new WordNotFoundInDictionaryException("Слово " + userAnswer + " не найдено в словаре");
+        }
+
         if (userAnswer.equals(answer)) {
             return setState(GameState.WON);
         }
@@ -48,10 +52,6 @@ public class WordleGame {
         }
 
         userSteps++;
-
-        if (!dictionary.containsWord(userAnswer)) {
-            throw new WordNotFoundInDictionaryException("Слово " + userAnswer + " не найдено в словаре");
-        }
 
         return setHint(userAnswer);
     }
@@ -95,6 +95,10 @@ public class WordleGame {
         }
 
         return dictionary.getWords(excludedChars, requiredChars, fixedChars);
+    }
+
+    public int getCurrentUserSteps() {
+        return userSteps;
     }
 
     public String getHint() throws EmptyHintsException {

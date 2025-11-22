@@ -24,7 +24,7 @@ public class Wordle {
         log = new Logger().getWriter();
         WordleDictionaryLoader wordleDictionaryLoader = new WordleDictionaryLoader();
         WordleDictionary wordleDictionary = wordleDictionaryLoader.loadWordleDictionary("words_ru.txt");
-        wordleGame = new WordleGame("шалаш", 6, wordleDictionary);
+        wordleGame = new WordleGame(wordleDictionary.getRandomWord(), 6, wordleDictionary);
     }
 
     public static void main(String[] args) {
@@ -32,9 +32,11 @@ public class Wordle {
         try (Scanner sc = new Scanner(System.in)) {
             run();
 
+            System.out.println("Угадайте слово из пяти букв, у вас шесть попыток. \nEnter - ввод слова или подсказка");
+
             while (wordleGame.getGameState() != GameState.WON && wordleGame.getGameState() != GameState.LOST) {
                 try {
-                    System.out.println("Введите слово:");
+                    System.out.println("Попытка: " + wordleGame.getCurrentUserSteps() + ". Введите слово:");
                     String word = sc.nextLine();
 
                     if (word.isEmpty()) {

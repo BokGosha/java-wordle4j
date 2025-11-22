@@ -1,9 +1,6 @@
 package ru.yandex.practicum;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /*
 этот класс содержит в себе список слов List<String>
@@ -56,6 +53,12 @@ public class WordleDictionary {
         }
 
         return dictionary;
+    }
+
+    public String getRandomWord() {
+        Random random = new Random();
+
+        return words.get(random.nextInt(0, words.size() - 1));
     }
 
     private boolean excludedCharsFound(Set<Character> excludedChars, String word) {
