@@ -32,7 +32,10 @@ public class Wordle {
         try (Scanner sc = new Scanner(System.in)) {
             run();
 
-            System.out.println("Угадайте слово из пяти букв, у вас шесть попыток. \nEnter - ввод слова или подсказка");
+            System.out.println("""
+                    Угадайте слово из пяти букв, у вас шесть попыток\s
+                    Enter - ввод слова или подсказка\s
+                    Exit - завершить игру""");
 
             while (wordleGame.getGameState() != GameState.WON && wordleGame.getGameState() != GameState.LOST) {
                 try {
@@ -42,6 +45,9 @@ public class Wordle {
                     if (word.isEmpty()) {
                         String hint = wordleGame.getHint();
                         System.out.println("Подсказка: " + hint);
+                    } else if (word.equals("Exit")) {
+                        System.out.println("Игра завершена");
+                        return;
                     } else {
                         validateWord(word);
 
